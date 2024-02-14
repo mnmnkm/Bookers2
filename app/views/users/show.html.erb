@@ -1,19 +1,5 @@
 <!--%= render 'books/list', books: @books %>-->
 
-<header>
-    <nav class= "navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class= "container">
-            <a class= "navbar-brand" href= "/">
-                <span>Bookers</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-             </button>
-        </div>
-    </nav>
-</header>
-
-
 <div>
   <%= flash[:notice] %>
 </div>
@@ -26,16 +12,17 @@
             <tbody>
                 <tr>
                     <th>name</th>
-                    <th>名前: <%= @book.user.name %></th>
+                    <th>名前: <%= @user.name %></th>
                 </tr>
                 <tr>
                     <th>introduction</th>
-                    <th>自己紹介文: <%= @book.user.introduction %></th>
+                    <th>自己紹介文: <%= @user.introduction %></th>
                 </tr>
             </tbody>
         </table>
         <% if @user.id == current_user.id %>
             <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+            <i class="fa-solid fa-user-gear"></i>
         <% end %>
 
 
