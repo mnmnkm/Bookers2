@@ -1,27 +1,40 @@
-<h1>Editing Book</h1>
-<% if @book.errors.any? %>
-    <%= @book.errors.count %> errors prohibited this obj from being saved:
-    <ul>
-        <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    </ul>
-<% end %>
 
-<%= form_with model: @book do |f| %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h1>Editing Book</h1>
+          <% if @book.errors.any? %>
+              <%= @book.errors.count %> errors prohibited this obj from being saved:
+              <ul>
+                  <% @book.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+              </ul>
+          <% end %>
+          
+            <%= form_with model: @book do |f| %>
+                <div class="form-group">
+                    <label for="本のタイトル">Title</label>
+                    <input class="form-control book_title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="感想">Opinion</label>
+                    <textarea class="form-control book_body"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <%= button_tag type:"submit", class:"btn btn-success" do %>
+                        Update Book
+                    <% end %>
+                </div>
+            <% end %>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+        <p>
+            <%= link_to "Show", book_path(@book.id) %>
+             |
+            <%= link_to "Back", books_path %>
+        </p>
+      </div>
+    </div>
+ </div>
   
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  
-  <%= f.submit 'Update Book' %>
-  
-<% end %>
-
-<p>
- <%= link_to "Show", book_path(@book.id) %>
- |
- <%= link_to "Back", books_path %>
-</p>
