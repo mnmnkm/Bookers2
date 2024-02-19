@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
     
     def after_sign_out_path_for(resource)
-        about_path
+        root_path
         # if @user.save
         #     filash[:notice] = "Signed out successfully."
         #     redirect_to about_path
